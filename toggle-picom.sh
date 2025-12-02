@@ -1,5 +1,5 @@
-if pgrep -x picom >/dev/null; then
-  pkill -f picom
+if systemctl --user is-active --quiet picom.service; then
+  systemctl --user stop picom.service
 else
-  picom &
+  systemctl --user start picom.service
 fi
